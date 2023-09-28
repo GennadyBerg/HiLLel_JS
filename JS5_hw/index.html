@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Конвертер величин</title>
+  <style>
+        #converter {
+                width: 60%;
+                background-color: bisque;
+                margin: auto;
+                text-align: center;
+        }
+        .input-group {
+                width: 80%;
+                margin: auto;
+                border: 1px solid #000;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+                
+        }
+
+        select {
+                padding: 10px 5px;
+
+        }
+        button {
+                padding-left: 50px;
+        }
+        #result {
+                padding: 15px 50px;
+                background-color: aquamarine;
+                width: 30%;
+                margin-left:260px;
+                text-align: end;
+
+        }
+        #convert {
+                padding: 10px ;
+                margin-left: 320px;
+        }
+        
+  </style>
+</head>
+<body>
+  <div id="converter">
+    <h1>Конвертер</h1>
+    <div class="input-group">
+      <label for="from">from</label>
+      <select id="from">
+        <option value="метры">Метры</option>
+        <option value="километры">Километры</option>
+        <option value="сантиметры">Сантиметры</option>
+        <option value="миллиметры">Миллиметры</option>
+        <option value="мили">Мили</option>
+        <option value="футы">Футы</option>
+        <option value="дюймы">Дюймы</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="value">Значение</label>
+      <input type="number" id="value" value="1">
+    </div>
+    <div class="input-group">
+      <label for="to">to</label>
+      <select id="to">
+        <option value="метры">Метры</option>
+        <option value="километры">Километры</option>
+        <option value="сантиметры">Сантиметры</option>
+        <option value="миллиметры">Миллиметры</option>
+        <option value="мили">Мили</option>
+        <option value="футы">Футы</option>
+        <option value="дюймы">Дюймы</option>
+      </select>
+    </div>
+    <button type="button" id="convert">Конвертировать</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const from = document.querySelector("#from");
+    const to = document.querySelector("#to");
+    const value = document.querySelector("#value");
+    const result = document.querySelector("#result");
+
+    const convert = () => {
+      const fromValue = from.value;
+      const toValue = to.value;
+      const valueNumber = parseFloat(value.value);
+
+      const conversionFactor = {
+        "метры": 1,
+        "километры": 1000,
+        "сантиметры": 0.01,
+        "миллиметры": 0.001,
+        "мили": 1609.344,
+        "футы": 0.3048,
+        "дюймы": 0.0254,
+      };
+
+      const convertedValue = valueNumber * conversionFactor[fromValue] / conversionFactor[toValue];
+
+      result.innerHTML = `${convertedValue}`;
+    };
+
+    convert();
+
+    document.querySelector("#convert").addEventListener("click", convert);
+  </script>
+</body>
+</html>

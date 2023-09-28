@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>Calculate</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="result"></div>
+      <form action="/calculate" method="post">
+        <input
+          type="text"
+          id="first"
+          placeholder="enter first number"
+          value="a"
+        />
+        <input type="text" id="second" value="b" />
+        <select id="operator">
+          <option value="+">+</option>
+          <option value="-">-</option>
+          <option value="*">*</option>
+          <option value="/">/</option>
+        </select>
+        <button type="submit" id="calculate">Calculate</button>
+      </form>
+      
+    </div>
+
+    <script>
+      function calculate() {
+        const a = Number(document.getElementById("first").value);
+        const b = Number(document.getElementById("second").value);
+        const operator = document.getElementById("operator").value;
+
+        switch (operator) {
+          case "+":
+            return firstNumber + secondNumber;
+          case "-":
+            return firstNumber - secondNumber;
+          case "*":
+            return firstNumber * secondNumber;
+          case "/":
+            return firstNumber / secondNumber;
+          default:
+            return "Invalid operator";
+        }
+      }
+      
+      const resultDiv = document.getElementById("result");
+      
+
+      document.getElementById("calculate").addEventListener("click", () => {
+        resultDiv.innerHTML = result;
+        // window.location.reload();
+      });
+      const result = calculate();
+      // console.log(result);
+    </script>
+  </body>
+</html>

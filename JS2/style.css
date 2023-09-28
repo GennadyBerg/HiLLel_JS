@@ -1,0 +1,30 @@
+.header {
+    width: 800px;
+    height: 400px;
+    background-color: bisque;
+    margin: auto;
+}
+
+.result {
+    width: 150px;
+    /* height: fit-content; */
+    max-height: 300px;
+    min-height: 40px;
+    overflow-y: scroll;
+    background-color: aquamarine;
+    border: 2px solid black;
+    margin: 40px;
+    padding-top: 10px;
+    font-size: large;
+
+}
+
+input {
+    background-color: aqua;
+    font-size: x-large;
+    width: 480px;
+}
+
+button {
+    height: 40px;
+}

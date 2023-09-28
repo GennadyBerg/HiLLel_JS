@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+            <script>
+                        let g;
+                        let arr = [1, 2, 5, 6, 8, 9, 4, 6, 1, 2, 3, 9]
+                        // console.log(arr[4], arr.length, arr[(arr.length - 1)], arr.at(-10));
+                        // console.log(arr.shift());
+                        // console.log(arr);
+                        // arr.unshift(1, 4, 7, 8, .9,);
+                        // console.log(arr);
+                        // let b = arr;
+                        // console.log(b);
+                        // console.log(arr === b);
+                        // arr[100] = 99;
+                        // console.log(b.length, b);
+                        // for (let i = 0; i < arr.length; i++) { }
+                        // for (const i of b) {
+                        //             console.log(i);
+                        // }
+                        // // for (const key in b) {
+                        // //             if (Object.hasOwnProperty.call(object, key)) {
+                        // //                         const element = object[key];
+
+                        // //             }
+                        // // }
+                        // let x = [];
+                        // x[50] = "b.length"
+                        // console.log(x.length);
+                        // let y = x.map(i => i + 2);
+                        // console.log(y);
+                        // x.length = 3;
+                        // console.log(x);
+                        let f = arr.forEach((i,x) => console.log(`element ${i}  have index = ${x}`));
+                        console.log(f);
+                        let d = arr.indexOf(5,0)
+                        console.log(d);
+                        let r = arr.includes(5,4)
+                        console.log(r);
+
+
+
+
+            </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+
+
+/// массив строк содержит ряд значений литеральных  (назв фруктов, овощей, с повторами некоторых)
+вывести только уникальные (не имеющие повторов)

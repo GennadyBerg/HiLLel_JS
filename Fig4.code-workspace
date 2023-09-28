@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../Fig4"
+		},
+		{
+			"path": "../Fig5_table"
+		}
+	],
+	"settings": {
+		"files.autoSave": "afterDelay",
+		"liveServer.settings.multiRootWorkspaceName": "Fig5_table"
+	}
+}

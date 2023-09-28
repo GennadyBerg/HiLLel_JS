@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Task 2
+    <script>
+        let factoryal = () => {
+            let factor = 1;
+            let userNum = +prompt("enter any number");
+            if (isNaN(userNum)) {
+                alert("entered wrong value");
+            }
+            else {
+
+                for (let i = 1; i <= userNum; i++) {
+                    factor = factor * i;
+                    // 4console.log(userNum, factor);
+                }
+
+            }
+            return factor;
+        }
+        alert(factoryal());
+
+    </script>
+</body>
+
+</html>

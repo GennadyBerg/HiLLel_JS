@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+body {
+    height: 100vh;
+    background-image: url(/Figma5/chris-holgersson-zshyCr6HGw0-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+
+}
+
+header {
+    background-color: rgba(127, 255, 212, 0.472);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0px 10px 8px lightblue;
+}
+
+.logo {
+    font-size: 36px;
+    font-weight: 900;
+
+
+}
+
+.logo:hover {
+    transform: scale(1.5);
+    transition: 0.5s;
+
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    height: 100px;
+    position: relative;
+    text-align: center;
+}
+
+nav ul li a {
+    line-height: 100px;
+    display: inline-block;
+    padding: 0 10px;
+    text-shadow: 2px 3px 2px yellow;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+nav ul li a:hover {
+    color: blue;
+    background-color: rgb(153, 226, 43);
+}
+
+/* ///////////menu 2 leve  */
+nav ul li ul {
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    display: none;
+    background-color: rgb(232, 128, 235);
+}
+
+nav ul li ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(52, 52, 240, 0.162);
+}
+
+nav ul li ul li a {
+    width: 100%;
+    font-size: smaller;
+
+}
+
+nav ul li ul li ul {
+    left: 100%;
+    top: 0;
+
+}
+
+/* /////////////menu down level open ////// */
+nav ul li:hover>ul {
+    display: block;

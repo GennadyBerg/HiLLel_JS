@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>Panter</title>
+    <link rel="stylesheet" href="index.css">
+=======
+    <title>Document</title>
+<!--     <link rel="stylesheet" href="/index.css"> -->
+    <style>
+    
+    `* {
+    bottom: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    border: 1px solid #000;
+    background: rgb(12, 232, 238);
+    background: linear-gradient(180deg, rgba(12, 232, 238, 1) 0%, rgba(247, 247, 250, 1) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.land {
+    background-image: url(/Anima_strites/land.png);
+    width: 100%;
+    height: 18%;
+    bottom: 0;
+    position: absolute;
+    animation: land 4s infinite linear
+}
+
+.clowd {
+    width: 196px;
+    height: 99px;
+    background-image: url(/Anima_strites/clowd.png);
+    position: relative;
+    top: 50px;
+    animation: clowd 10s infinite linear;
+    transform: translateX(1000%);
+
+}
+
+.second {
+    top: 150px;
+    animation: clowd 7s infinite linear;
+
+}
+
+@keyframes clowd {
+    100% {
+        transform: translateX(-100%);
+    }
+
+}
+
+@keyframes land {
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+.person {
+    width: 160px;
+    height: 260px;
+    background-image: url(/Anima_strites/sprites.png);
+    position: absolute;
+    bottom: 106px;
+    left: -100px;
+    z-index: 1;
+    animation: manfr 1s infinite steps(6),
+                manX1 6s infinite cubic-bezier(.73,.41,.24,.96);
+                /* manX2 2s 2s infinite linear; */
+}
+
+@keyframes manfr {
+    100% {
+        background-position: -960px 0;
+    }
+}
+/* ////////sync &&&&&&&&&&&&&&&&&///////////////////// */
+@keyframes manX1 {
+    100% {
+        left: 150%;
+    }
+}
+
+/* @keyframes manX2 {
+
+    100% {
+        left: 100%;
+    }
+} */
+
+.panther {
+    width: calc(989px / 2);
+    height: calc(963px / 4);
+    background-image: url(/Anima_strites/Image20230720195857.png);
+    position: absolute;
+    bottom: 70px;
+    left: -100%;
+    animation: pantherx 0.5s infinite steps(2),
+        panthery 1s infinite steps(4),
+        pant-run 6s  infinite linear;
+
+
+}
+
+@keyframes pantherx {
+    0% {
+        background-position-x: 0;
+    }
+
+    100% {
+        background-position-x: 989px;
+    }
+
+}
+
+@keyframes panthery {
+    0% {
+        background-position-y: 0;
+    }
+
+    100% {
+        background-position-y: -969px;
+    }
+}
+
+@keyframes pant-run {
+    100% {
+        left: 100%;
+    }
+}
+        </style>
+>>>>>>> 42a1ef10bfe0307e7c6fb56e927ad052c8642557
+</head>
+<body>
+    <div class="container">
+        <div class="person"></div>
+        <div class="clowd first"></div>
+        <div class="clowd second"></div>
+        <div class="land"></div>
+        <div class="panther"></div>
+    </div>
+</body>
+</html>

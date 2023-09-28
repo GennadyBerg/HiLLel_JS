@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS8_HW</title>
+    <script>
+        let maxSumm = 0;
+        let valueSumm = 0;
+        // let substrStart = 0;
+        // let substrEnd = 0;
+        function subStrMax(numbers) {
+
+            for (const iterator of numbers) {
+                valueSumm += iterator;
+                maxSumm = Math.max(maxSumm, valueSumm);
+                if (valueSumm < 0) {
+                //   substrStart = iterator + 1;  
+                    valueSumm = 0;
+                }
+
+
+            }
+            return maxSumm ;
+        }
+        const numbers = [6, 5, 43, 3, -61, -45, 9, -8, 4, -34, 2, 1, -6, 4, -4, 3, 61, -69, 8, 4, 76, 9, -4, 6];
+        // const subVar = [maxSumm, substrStart] 
+        console.log(subStrMax(numbers)); 
+        // console.log(numbers.slice(substrStart,substrEnd), maxSumm);
+        // console.log(substrStart);
+    </script>
+</head>
+
+<body>
+    <!-- <script src="script.js"></script> -->
+</body>
+
+</html>

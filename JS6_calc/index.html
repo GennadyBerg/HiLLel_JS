@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc</title>
+    <style>
+        body {
+            background-color: bisque;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background-color: rgb(249, 234, 212);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            border: 1px solid #000;
+            padding-bottom: 50px;
+
+        }
+
+        .container>input,
+        button {
+            width: 85%;
+            padding: 30px;
+            font-size: 46px;
+            font-weight: bold;
+            border-radius: 10px;
+box-shadow: #5e85ee 5px 5px 15px;
+
+        }
+        button {
+            width: 40%;
+
+        }
+        button:hover {
+            transform:scale(1.2) ;
+        }
+
+        #plus {
+            background: #e8f556;
+            width: 50%;
+        }
+
+        #minus {
+            background: #a479ed;
+            width: 50%;
+        }
+
+        #multiply {
+            background: #f6b36b;
+            width: 50%;
+        }
+
+        #divide {
+            background: #5e85ee;
+            width: 50%;
+        }
+
+        #checkout {
+            background: #8ffa9a;
+            width: 50%;
+        }
+.wraper-oper {
+    width: 70%;
+    display: flex;
+    gap: 30px;
+
+}
+#result:hover {
+    transform: scale(1.05);
+}
+        /* input {
+            width: ;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>CALCULATOR</h1>
+        <input type="number" id="num1" value="0" placeholder="input first num">
+        <div class="wraper-oper">
+            <button id="plus">+</button>
+            <button id="minus">-</button>
+            <button id="multiply">*</button>
+            <button id="divide">/</button>
+        </div>
+        <input type="number" id="num2" value="0" placeholder="input second num">
+        <button id="checkout">=</button>
+        <input type="text" id="result" value="result">
+    </div>
+    <script>
+        let num1 = document.getElementById("num1");
+        let num2 = document.getElementById("num2");
+        let result = document.getElementById("result");
+        let resultStyle = document.querySelector("result");
+        let minus = document.getElementById("minus");
+        let plus = document.getElementById("plus");
+        let multiply = document.getElementById("multiply");
+        let divide = document.getElementById("divide");
+        let checkbox = document.getElementById("checkbox");
+        let action = '+'
+        plus.onclick = function () {
+            action = "+";
+        }
+        minus.onclick = function () {
+            action = "-";
+        }
+        multiply.onclick = function () {
+            action = "*";
+        }
+        divide.onclick = function () {
+            action = "/";
+        }
+        checkout.onclick = function () {
+            if (action === "+") {
+                result.value = +num1.value + +num2.value;
+            }
+            if (action === "-") {
+                result.value = +num1.value - +num2.value;
+            }
+            if (action === "*") {
+                result.value = +num1.value * +num2.value;
+            }
+            if (action === "/") {
+                result.value = +num1.value / +num2.value;
+            }
+            resultStyle = result;
+            if (resultStyle.value > 0) {
+                result.setAttribute("style", "background-color: red")
+            }
+            else result.setAttribute("style", "background-color: lightblue");
+
+        }
+    </script>
+</body>
+
+</html>
+
+
+<!-- ///положительный результат красим красн
+отриц - синим
+добавляем функции
+если некоректн ввод - алерты
+тени -->

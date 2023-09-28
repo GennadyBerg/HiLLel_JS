@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calc_Obj</title>
+</head>
+
+<body>
+        <script>
+                // function Obj(name, age) {
+                //         this.name = name;
+                //         this.age = age;
+
+                // }
+
+                // let user = new Obj("Vasya", 60);
+                // let user1 = new Obj("Venya", 40);
+                // console.log(user);
+                // console.log(user1);
+                // const object = {
+
+                //         // num1: "", 
+                //         // num2: "",
+                //         // res: "",
+
+
+                //         method3() {
+
+
+                //         },
+                // }
+                // function MetObj(method1, method2, method3) {
+                //         this.method = function () {
+                //                 this.num1 = +prompt("enter ? please", 0);
+                //                 this.num2 = +prompt("enter ?2 please", 1);
+                //         }
+                //         this.method1 = function () {
+                //                 return this.num1 * this.num2;
+
+                //         }
+                //         this.method2 = function () {
+                //                 return this.num1 + this.num2;
+                //         };
+                // }
+                // let object1 = new MetObj();
+
+                // 4
+                // object1.method();
+                // object1.method1();
+                // object1.method2();
+                // console.log(object1.method1(), object1.method2());
+                // function ValueConstruct(num) {
+                //         this.value = num;
+                //         this.sumVal = function () {
+                //                 this.value += +prompt("Enter num");
+                //                 return this.value;
+                //         }
+                // }
+                // let itemValue1 = new ValueConstruct(10);
+                // itemValue1.sumVal()
+                // let itemValue2 = new ValueConstruct(20);
+                // itemValue2.sumVal()
+                // let itemValue3 = new ValueConstruct(30);
+                // itemValue3.sumVal()
+
+                // console.log(itemValue1.value, itemValue2.value, itemValue3.value);
+                // // ValueConstruct(10);
+
+                ///////////////////////// Lesson8JS/////////////////////////
+                // let id = Symbol.for('ID')
+                // let id2 = Symbol.for('ID')
+                // console.log(Symbol.keyFor(id));
+
+                // const user = {
+                //         name: "vasya",
+                //         age: 20,
+                //         objectInt: {
+                //                 ['id']: 50
+
+                //         },
+                //         [Symbol.toPrimitive](hint) {
+                //                 return hint == "number" ? this.age : this.name;
+
+                //         },
+                //         toString() {
+                //                 return 'hhhhhhhhhhhh';
+                //         },
+                // }
+                // console.log(user?.objectInt?.value);
+                // let a = Symbol('id')
+                // user[a] = 100
+                // for (let key in user) {
+
+                //         console.log(user[a], user[key], a.description);
+                // }
+
+                // let c = a.description
+                // console.log(c);
+                // console.log(+user);
+                // // console.log(+user);
+                // console.log;
+                ////////////////HomeWork2///////////////
+
+                // function randNum(x, y) {
+                //         let random = Math.random();
+
+                //         if (y > x) {
+                //                 res = random * (y - x) + x;
+
+                //         }
+                //         else {
+                //                 res = random * (x - y) + y;
+                //                 return res;
+                //         }
+                //         return res;
+                // }
+                // console.log(randNum(30, 50));
+
+
+                // let num
+                // function enterNum() {
+                //         num = prompt("Enter any num");
+                //         if (num === null || num === "") {
+                //                 return enterNum()
+
+                //         }
+                //         else if (isFinite(num)) {
+                //                 return alert(num)
+                //         }
+                // }
+                // enterNum();
+                console.log(
+                        Math.pow(2,4)
+                );
+
+
+
+        </script>
+</body>
+
+</html>
+
+
+//// создать ф-конструктор. для создания объекта, хранящего текущие знасчения в свойстве value
+начальное значение устаниавливается в аргументе конструктора
+пользователь ввод промпт и меняет значения, суммируя со стартоваым аогументом)
+
+
+2222
+создать функц, которая запрашивает ввод числа пока посетитель не введет, прервать по эск, отмене или по пустой строке
+возврат по налл
+
+
+функ, принимает 2 аргумента, мин и макс число..., генерирует случ число с плав точкойЭ в интервале от мин до макс
+
+
+/////////////////HomeWork3//////////////////////////
+функция, которая проверит на наличие или  отстутвие фрагмента и вернет  истину или ложь при наличии слов , запрещенных 
+
+если длина строки выше определенного кол-ва знаков.. - обрезать строку и поставить многоточие...

@@ -1,0 +1,19 @@
+.box {
+width: 500px;
+height: 300px;
+border: 1px solid #d12020;
+/* background-image: url(/0841-1000x1000.jpg100220.jpg);
+background-repeat:no-repeat;
+background-position: center;
+background-size:cover ;
+background-attachment: scroll; */
+margin-bottom: 1000px;
+overflow: auto;
+background: url(/0841-1000x1000.jpg100220.jpg) center/cover no-repeat scroll;
+}
+img {
+    float: left;
+}
+div {
+    width: 50%;
+}

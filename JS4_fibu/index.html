@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let n = +prompt("enter number");
+        let array = [];
+        for (let i = 0; i < n; i++) {
+            if (i <= 1) {
+                array += i;
+
+            }
+            else {
+                let a = Number([(i - 2)]);
+                let b = Number([(i - 1)]);
+                let c = (a + b)
+                array += c;
+
+            }
+            console.log(array);
+
+
+        }
+        alert(array[n]);
+    </script>
+</body>
+
+</html>

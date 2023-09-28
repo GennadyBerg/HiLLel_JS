@@ -1,0 +1,54 @@
+*{
+    bottom: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    background-color: rgb(127, 84, 166);
+    color: aqua;
+}
+
+.svg1 {
+    background-image: url(logo.svg);
+    width: 200px;
+    height: 200px;
+}
+svg:hover {
+    animation: anim1 5s infinite alternate linear
+
+}
+@keyframes anim1 {
+    0% {
+        fill: red;
+        stroke: green;
+
+    }
+    100% {
+        fill: green;
+        stroke: red;
+    }
+}
+.svg {
+    border: 2px solid #000;
+    width: 1000px;
+    height: 500px;
+
+}
+#first {
+    stroke-dasharray: 2400px ;
+    stroke-dashoffset: 2400px;
+    /* animation: light 3s .5s  linear forwards; */
+}
+#first:hover {
+animation: light 3s  linear forwards;
+}
+@keyframes light {
+    100% {
+        stroke-dashoffset: 0px
+    }
+}
+#back-img {
+    clip-path: url(#cpath);
+    width: 1000px;
+}

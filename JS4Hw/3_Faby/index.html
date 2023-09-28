@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let num = +prompt("????");
+        function result(num) {
+            let a = 1;
+            let b = 1;
+            let c;
+            for (let i = 3; i <= num; i++) {
+                c = a + b; ////c=2     2) c=3
+                a = b;  //////a=1      a=2
+                b = c;   /////b=2       b=3
+            }
+            return b;
+        }
+        alert(result(num));
+    </script>
+</body>
+
+</html>
+
+
+<!-- 
+let n = +prompt("enter number");
+        let arr = [];
+        for (let i = 0; i < n; i++) {
+            if (i <= 1) {
+                arr += i;
+
+            }
+            else {
+                let x = (i-2)
+                let y = (i-1)
+                arr += arr[y] + arr[x];
+
+            }
+            console.log(arr);
+
+
+        }
+        alert(arr[i]); -->

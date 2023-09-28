@@ -58,7 +58,7 @@
 //ternary operator
 
 
-const numberToConvert = prompt('Enter number>', 0);
+// const numberToConvert = prompt('Enter number>', 0);
 
 // if (numberToConvert >= 0) {
 //             console.log(
@@ -73,5 +73,26 @@ const numberToConvert = prompt('Enter number>', 0);
 //                         -numberToConvert)
 // }
 
-const num = (numberToConvert >= 0) ? numberToConvert : -numberToConvert;
-console.log(num);
+// const num = (numberToConvert >= 0) ? numberToConvert : -numberToConvert;
+// console.log(num);
+
+///lOGICAL OPERATORS
+
+// const ok = true;
+// const no = false;
+// const maybeOk = true;
+// const result = ok && maybeOk;
+// //inverse   
+// //  !
+// console.log(
+//             '&&>',result
+// );
+
+let currentHours = new Date().getHours();
+console.log(currentHours);
+if (currentHours >= 19 && currentHours < 21) {
+            console.log('Time to learn');
+}
+else {
+            console.log('FRee time');
+}

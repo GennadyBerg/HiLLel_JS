@@ -1,4 +1,4 @@
-// 1-st relise             /////////////////////////////
+// 1-st release             /////////////////////////////
 
 
 
@@ -15,7 +15,8 @@ else {
 console.log('End of code\)\)\)');
 
 
-// 2-nd relise ////////////////////////////
+// 2-nd release ////////////////////////////
+
 
 let fingerNum1 = +prompt('Enter any finger number? please', '');
 if (fingerNum1 < 1 || fingerNum1 > 5 || fingerNum1 === 0 || !fingerNum1) {

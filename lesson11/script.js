@@ -1,3 +1,34 @@
+
+function ConstructCity(square, cityName, shopCounts, sportClubCounts, lineRoads) {
+    this.square = square,
+        this.lineRoads = lineRoads,
+        this.cityName = cityName,
+        this.sportClubCounts = sportClubCounts,
+        this.shopCounts = shopCounts
+};
+
+// ConstructCity.stadiumColor = 'green';
+const myCity = new ConstructCity(
+    40,
+    prompt('Enter city name', 'newVasyuki'), prompt('Enter shops count', 50),
+    prompt('Enter sports Club count', 5), 30
+
+);
+const myCity2 = new ConstructCity(
+    40,
+    prompt('Enter city name', 'newVasyuki'),
+    prompt('Enter shops count', 50),
+    prompt('Enter sports Club count', 5), 20
+
+);
+// console.log(myCity);
+console.log(myCity2);
+console.table(myCity);
+
+
+
+
+
 // const a = {
 //     y:3,
 //     x:5,
@@ -75,16 +106,16 @@
 
 // 
 
-function MakeBuilding(floorsCount, appartmentsCount, name, street) {
-    this.floorsCount = floorsCount,
-        this.appartmentsCount = appartmentsCount,
+// function MakeBuilding(floorsCount, appartmentsCount, name, street) {
+//     this.floorsCount = floorsCount,
+//         this.appartmentsCount = appartmentsCount,
 
-        this.name = name,
-        this.street = street
-};
-MakeBuilding.elevator = true;
+//         this.name = name,
+//         this.street = street
+// };
+// MakeBuilding.elevator = true;
 
-const firstBuilding = new MakeBuilding(
-    prompt('Enter floorsCount', 10),
-    40, "JK Gefest", "Soborna");
-console.log(firstBuilding);
+// const firstBuilding = new MakeBuilding(
+//     prompt('Enter floorsCount', 10),
+//     40, "JK Gefest", "Soborna");
+// console.log(firstBuilding);

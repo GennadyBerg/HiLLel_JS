@@ -82,26 +82,82 @@
 
 
 
-class Thermostat {
-    constructor(F) {
-        this.F = F;
-    }
-    get temp() {
-        return 5 / 9 * (this.F - 32);
-    }
-    set temp(C) {
-        this.F = (C * 9 / 5) + 32;
-    }
-    newProperty = 'I am New'
-coolMethod()
-{
-    console.log(this.newProperty);
-}
-}
-const thermos = new Thermostat(56);
-console.log(thermos.F);
-const celsius = thermos.temp;
-console.log(celsius);
-console.log(thermos.newProperty);
-thermos.coolMethod();
+// class Thermostat {
+//     constructor(F) {
+//         this.F = F;
+//     }
+//     get temp() {
+//         return 5 / 9 * (this.F - 32);
+//     }
+//     set temp(C) {
+//         this.F = (C * 9 / 5) + 32;
+//     }
+//     newProperty = 'I am New'
+// coolMethod()
+// {
+//     console.log(this.newProperty);
+// }
+// }
+// const thermos = new Thermostat(56);
+// console.log(thermos.F);
+// const celsius = thermos.temp;
+// console.log(celsius);
+// console.log(thermos.newProperty);
+// thermos.coolMethod();
 
+
+// //// FIRST Method resolve
+class Rectangle {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+    areaCalc() {
+        const res = this.width * this.height;
+        console.log(' area square of Rectangle = ' + res);
+    }
+
+    perimeter() {
+        const res = this.width * 2 + this.height * 2;
+        console.log(' perimeter of Rectangle = ' + res);
+    }
+}
+const figura1 = new Rectangle(3, 4);
+console.log(figura1);
+figura1.areaCalc();
+figura1.perimeter();
+
+
+///////////  SECOND Method  ////////////////
+
+
+class Rectangle1 {
+    constructor(width, height) {
+        this.width = width;
+        this.height = height;
+    }
+
+    areaCalc1() {
+        const result = this.width * this.height;
+        console.log(result);
+        return result;
+    }
+    perimeter1() {
+        const result1 = this.width * 2 + this.height * 2;
+        console.log(result1);
+        return result1;
+        
+    }
+
+    get sguareGet() {
+        return this.areaCalc1();
+    }
+    get perimeterGet() {
+        return this.perimeter1();
+    }
+}
+
+const figura2 = new Rectangle1(5, 6);
+console.log(figura2);
+console.log(figura2.squareGet);
+console.log(figura2.perimeterGet);

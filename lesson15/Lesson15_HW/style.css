@@ -1,0 +1,12 @@
+.wrapper {
+            width: 45%;
+            height: 50vh;
+            background-color: aquamarine="lightBlue";
+            text-align: center;
+}
+
+.delete-btn {
+            cursor: pointer;
+            color: red;
+            margin-left: 5px;
+}

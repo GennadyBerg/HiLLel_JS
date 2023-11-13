@@ -1,6 +1,6 @@
 const tasks = [];
 const myTasksTitle = document.querySelector("h1");
-myTasksTitle.textContent = "My List of tasks :" + prompt("Enter name of Your Note with tasks");
+myTasksTitle.textContent = "My List:" + prompt("Enter name of Your Note with tasks");
 
 const addTask = document.getElementById("add-task");
 const removeTask = document.getElementById("remove-elem");

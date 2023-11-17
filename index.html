@@ -3,22 +3,131 @@
 
 <head>
             <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-
-            <link rel="stylesheet" href="lesson15/Lesson15_HW/style.css">
+            <title>LocalStorage Example</title>
 </head>
 
 <body>
-            <div class="wrapper">
-                        <h1></h1>
-                        <button id="add-task">Add item to list</button>
-                        <ul id="myList"></ul>
+
+            <script>
+                        const storageTitle = 'title';
+                        const storageName = 'elements';
+                        const tasks = [];
+                        let store = null;
+                        let titleStor = null;
+
+                        const noteWrap = createEl('div', { id: 'main-wrap', className: "wrapper" });
+
+                        document.body.appendChild(noteWrap);
+                        noteWrap.style.backgroundColor = "lightBlue";
+                        noteWrap.style.width = "45%";
+                        noteWrap.style.height = "50vh";
+                        noteWrap.style.textAlign = "center";
+
+                        function createEl(tag, attr) {
+                                    const element = document.createElement(tag);
+                                    for (const key in attr) {
+                                                element[key] = attr[key];
+                                    }
+                                    return element;
+                        }
+
+                        function setItemsSaveLStorage(title) {
+                                    // Создание и добавление элемента h2 на страницу
+                                    const notesTitle = createEl('h2', { id: 'title', textContent: title });
+                                    noteWrap.appendChild(notesTitle);
+                                    // Сохранение заголовка в localStorage
+                                    localStorage.setItem("storageTitle", title);
+                        }
+                        // Попытка получить заголовок из localStorage
+                        const storedTitle = localStorage.getItem("storageTitle");
+                        // Если заголовок есть в localStorage, установить его в тег h2
+                        if (storedTitle) {
+                                    setItemsSaveLStorage(storedTitle);
+                        } else {
+                                    // Если заголовка нет, запросить его у пользователя через prompt
+                                    const userInput = prompt("Enter text :");
+                                    // Если пользователь ввел заголовок, установить его в тег h2 и сохранить в localStorage
+                                    if (userInput) {
+                                                setItemsSaveLStorage(userInput);
+                                    }
+                                    // Если пользователь не ввел заголовок, можно добавить дополнительную логику или оставить пустым
+                        }
+                        const button = createEl('button', { textContent: "ADD New Task" });
+                        noteWrap.appendChild(button);
+
+                        const tasksList = createEl('ul');
+                        noteWrap.appendChild(tasksList);
 
 
 
-            </div>
-            <script src="lesson15/Lesson15_HW/script.js"></script>
+
+                        const addTask = document.getElementById("add-task");
+                        addTask.addEventListener('click', (event) => {
+                                    const task = getPrompt(task);
+                                    tasks.push(task)
+                        });
+
+                        const removeTask = document.getElementById("remove-elem");
+
+
+                        if (localStorage.getItem(storageName)) {
+                                    store = localStorage.getItem(storageName).split(',');
+                        } else {
+                                    while (true) {
+                                                const task = prompt('Enter option > ');
+                                                if (!task) break;
+
+                                                tasks.push(task);
+                                    }
+
+                                    localStorage.setItem(storageName, tasks);
+                                    store = tasks;
+                        }
+                        tasks.forEach(task => {
+                                    const itemTask = document.createElement("li");
+                                    itemTask.innerHTML = task;
+                                    taskList.appendChild(itemTask)
+                                    itemTask.appendChild(deleteButton);
+                                    deleteButton.addEventListener("click", (event) => {
+                                                taskList.removeChild(itemTask);
+                                    })
+
+                        });
+
+
+                        ////////////handle add task////////////////
+
+
+//                         const handleTaskAdd = () => {
+//             while (true) {
+//                         const task = prompt("Enter task please");
+//                         if (!task) break;
+//                         tasks.push(task);
+//             }
+//             tasks.forEach(task => {
+//                         const itemTask = document.createElement("li");
+//                         itemTask.innerHTML = task;
+//                         const deleteButton = document.createElement("span");
+//                         deleteButton.className = "delete-btn";
+//                         deleteButton.textContent = "❌";
+//                         deleteButton.addEventListener("click", (event) => {
+//                                     ulTasks.removeChild(itemTask);
+//                         });
+
+
+//                         itemTask.appendChild(deleteButton);
+//                         ulTasks.append(itemTask);
+//             })
+// }
+
+// addTask.addEventListener("click", handleTaskAdd);
+
+
+
+            </script>
+
 </body>
 
 </html>

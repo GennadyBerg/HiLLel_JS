@@ -34,95 +34,86 @@
                         }
 
                         function setItemsSaveLStorage(title) {
-                                    // Создание и добавление элемента h2 на страницу
+
                                     const notesTitle = createEl('h2', { id: 'title', textContent: title });
                                     noteWrap.appendChild(notesTitle);
-                                    // Сохранение заголовка в localStorage
+
                                     localStorage.setItem("storageTitle", title);
                         }
-                        // Попытка получить заголовок из localStorage
+
                         const storedTitle = localStorage.getItem("storageTitle");
-                        // Если заголовок есть в localStorage, установить его в тег h2
+
                         if (storedTitle) {
                                     setItemsSaveLStorage(storedTitle);
                         } else {
-                                    // Если заголовка нет, запросить его у пользователя через prompt
                                     const userInput = prompt("Enter text :");
-                                    // Если пользователь ввел заголовок, установить его в тег h2 и сохранить в localStorage
                                     if (userInput) {
                                                 setItemsSaveLStorage(userInput);
                                     }
-                                    // Если пользователь не ввел заголовок, можно добавить дополнительную логику или оставить пустым
                         }
-                        const button = createEl('button', { textContent: "ADD New Task" });
+                        const button = createEl('button', { textContent: "ADD New Task", id: "add-task" });
                         noteWrap.appendChild(button);
 
                         const tasksList = createEl('ul');
                         noteWrap.appendChild(tasksList);
 
-
-
-
                         const addTask = document.getElementById("add-task");
                         addTask.addEventListener('click', (event) => {
-                                    const task = getPrompt(task);
-                                    tasks.push(task)
-                        });
+                                    const task = prompt('Enter new task');
+                                    tasks.push(task);
 
-                        const removeTask = document.getElementById("remove-elem");
-
-
-                        if (localStorage.getItem(storageName)) {
-                                    store = localStorage.getItem(storageName).split(',');
-                        } else {
-                                    while (true) {
-                                                const task = prompt('Enter option > ');
-                                                if (!task) break;
-
-                                                tasks.push(task);
-                                    }
-
+                                    // Update local storage
                                     localStorage.setItem(storageName, tasks);
-                                    store = tasks;
-                        }
-                        tasks.forEach(task => {
+
+                                    // Add task to the DOM
                                     const itemTask = document.createElement("li");
                                     itemTask.innerHTML = task;
-                                    taskList.appendChild(itemTask)
-                                    itemTask.appendChild(deleteButton);
-                                    deleteButton.addEventListener("click", (event) => {
-                                                taskList.removeChild(itemTask);
-                                    })
+                                    const deleteButton = document.createElement("span");
+                                    deleteButton.className = "delete-btn";
+                                    deleteButton.textContent = "❌";
+                                    deleteButton.addEventListener("click", () => {
+                                                // Remove task from array
+                                                const taskIndex = tasks.indexOf(task);
+                                                tasks.splice(taskIndex, 1);
 
+                                                // Update local storage
+                                                localStorage.setItem(storageName, tasks);
+
+                                                // Remove task from the DOM
+                                                tasksList.removeChild(itemTask);
+                                    });
+
+                                    itemTask.appendChild(deleteButton);
+                                    tasksList.appendChild(itemTask);
                         });
 
 
                         ////////////handle add task////////////////
 
 
-//                         const handleTaskAdd = () => {
-//             while (true) {
-//                         const task = prompt("Enter task please");
-//                         if (!task) break;
-//                         tasks.push(task);
-//             }
-//             tasks.forEach(task => {
-//                         const itemTask = document.createElement("li");
-//                         itemTask.innerHTML = task;
-//                         const deleteButton = document.createElement("span");
-//                         deleteButton.className = "delete-btn";
-//                         deleteButton.textContent = "❌";
-//                         deleteButton.addEventListener("click", (event) => {
-//                                     ulTasks.removeChild(itemTask);
-//                         });
+                        //                         const handleTaskAdd = () => {
+                        //             while (true) {
+                        //                         const task = prompt("Enter task please");
+                        //                         if (!task) break;
+                        //                         tasks.push(task);
+                        //             }
+                        //             tasks.forEach(task => {
+                        //                         const itemTask = document.createElement("li");
+                        //                         itemTask.innerHTML = task;
+                        //                         const deleteButton = document.createElement("span");
+                        //                         deleteButton.className = "delete-btn";
+                        //                         deleteButton.textContent = "❌";
+                        //                         deleteButton.addEventListener("click", (event) => {
+                        //                                     ulTasks.removeChild(itemTask);
+                        //                         });
 
 
-//                         itemTask.appendChild(deleteButton);
-//                         ulTasks.append(itemTask);
-//             })
-// }
+                        //                         itemTask.appendChild(deleteButton);
+                        //                         ulTasks.append(itemTask);
+                        //             })
+                        // }
 
-// addTask.addEventListener("click", handleTaskAdd);
+                        // addTask.addEventListener("click", handleTaskAdd);
 
 
 

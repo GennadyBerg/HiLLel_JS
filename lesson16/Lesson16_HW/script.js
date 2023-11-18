@@ -23,7 +23,7 @@ else {
             noteWrap.append(myTasksTitle);
 
 localStorage.setItem(storageTitle )
-// titleStor = str;
+titleStor = str;
 }
 
 

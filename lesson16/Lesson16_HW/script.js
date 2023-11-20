@@ -32,47 +32,47 @@ addTaskButton.textContent = "Add new Task";
 addTaskButton.id = "add-task";
 noteWrap.append(addTaskButton);
 
-const deleteButton = document.createElement("span");
-deleteButton.className = "delete-btn";
-deleteButton.textContent = "❌";
+// const deleteButton = document.createElement("span");
+// deleteButton.className = "delete-btn";
+// deleteButton.textContent = "❌";
 
-if (localStorage.getItem(storageName)) {
-            store = localStorage.getItem(storageName).split(',');
-} else {
-            while (true) {
-                        const task = prompt('Enter option > ');
-                        if (!task) break;
+// if (localStorage.getItem(storageName)) {
+//             store = localStorage.getItem(storageName).split(',');
+// } else {
+//             while (true) {
+//                         const task = prompt('Enter option > ');
+//                         if (!task) break;
 
-                        tasks.push(task);
-            }
+//                         tasks.push(task);
+//             }
 
-            localStorage.setItem(storageName, tasks);
-            store = tasks;
-}
+//             localStorage.setItem(storageName, tasks);
+//             store = tasks;
+// }
 
-const taskList = document.createElement("ul");
-noteWrap.appendChild(taskList);
+// const taskList = document.createElement("ul");
+// noteWrap.appendChild(taskList);
 
-const addTask = document.getElementById("add-task");
-const removeTask = document.getElementById("remove-elem");
-
-
-tasks.forEach(task => {
-            const itemTask = document.createElement("li");
-            itemTask.innerHTML = task;
-            taskList.appendChild(itemTask)
-            itemTask.appendChild(deleteButton);
-            deleteButton.addEventListener("click", (event) => {
-                        taskList.removeChild(itemTask);
-            })
-
-});
+// const addTask = document.getElementById("add-task");
+// const removeTask = document.getElementById("remove-elem");
 
 
+// tasks.forEach(task => {
+//             const itemTask = document.createElement("li");
+//             itemTask.innerHTML = task;
+//             taskList.appendChild(itemTask)
+//             itemTask.appendChild(deleteButton);
+//             deleteButton.addEventListener("click", (event) => {
+//                         taskList.removeChild(itemTask);
+//             })
+
+// });
 
 
 
 
 
-// localStorage.clear();
+
+
+// // localStorage.clear();
 

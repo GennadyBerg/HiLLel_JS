@@ -2,112 +2,111 @@
 <html lang="en">
 
 <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>LocalStorage Example</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Example</title>
 </head>
 
 <body>
 
-            <script>
-                        const storageTitle = 'title';
-                        const storageName = 'elements';
-                        const tasks = [];
-                        let store = null;
-                        let titleStor = null;
+    <script>
+        const storageTitle = 'title';
+        const storageName = 'elements';
+        const tasks = [];
+        let store = null;
+        let titleStor = null;
 
-                        const noteWrap = createEl('div', { id: 'main-wrap', className: "wrapper" });
+        const noteWrap = createEl('div', { id: 'main-wrap', className: "wrapper" });
 
-                        document.body.appendChild(noteWrap);
-                        noteWrap.style.backgroundColor = "lightBlue";
-                        noteWrap.style.width = "45%";
-                        noteWrap.style.height = "50vh";
-                        noteWrap.style.textAlign = "center";
+        document.body.appendChild(noteWrap);
+        noteWrap.style.backgroundColor = "lightBlue";
+        noteWrap.style.width = "45%";
+        noteWrap.style.height = "50vh";
+        noteWrap.style.textAlign = "center";
 
-                        function createEl(tag, attr) {
-                                    const element = document.createElement(tag);
-                                    for (const key in attr) {
-                                                element[key] = attr[key];
-                                    }
-                                    return element;
-                        }
+        function createEl(tag, attr) {
+            const element = document.createElement(tag);
+            for (const key in attr) {
+                element[key] = attr[key];
+            }
+            return element;
+        }
 
-                        function setItemsSaveLStorage(title) {
+        function setItemsSaveLStorage(title) {
+            const notesTitle = createEl('h2', { id: 'title', textContent: title });
+            noteWrap.appendChild(notesTitle);
+            localStorage.setItem("storageTitle", title);
+        }
 
-                                    const notesTitle = createEl('h2', { id: 'title', textContent: title });
-                                    noteWrap.appendChild(notesTitle);
+        function renderTasks() {
+            tasksList.innerHTML = ""; // Очищаем список перед добавлением новых задач
 
-                                    localStorage.setItem("storageTitle", title);
-                        }
+            tasks.forEach(task => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = task;
 
-                        const storedTitle = localStorage.getItem("storageTitle");
-                        const storedTaskList = localStorage.getItem("elements");
+                const deleteButton = document.createElement("span");
+                deleteButton.className = "delete-btn";
+                deleteButton.textContent = "❌";
 
-                        if (storedTitle) {
-                                    setItemsSaveLStorage(storedTitle);
-                        } else {
-                                    const userInput = prompt("Enter text :");
-                                    if (userInput) {
-                                                setItemsSaveLStorage(userInput);
-                                    }
-                        }
+                deleteButton.addEventListener("click", (event) => {
+                    const taskIndex = tasks.indexOf(task);
+                    tasks.splice(taskIndex, 1);
 
-                        if (storedTaskList) {
-                                    tasks.push(...storedTaskList.split(','));
-                        } else {
-                                    while (true) {
-                                                const task = prompt('Enter new task');
-                                                if (!task) break;
-                                                tasks.push(task);
+                    localStorage.removeItem(storageName);
+                    localStorage.setItem(storageName, tasks);
+                    tasksList.removeChild(listItem);
+                });
 
-                                    }
+                listItem.appendChild(deleteButton);
+                tasksList.appendChild(listItem);
+            });
+        }
 
-                                    localStorage.setItem(storageName, tasks);
-                                    store = tasks;
-                        }
+        const storedTitle = localStorage.getItem("storageTitle");
+        const storedTaskList = localStorage.getItem("elements");
 
-                        const button = createEl('button', { textContent: "ADD New Task", id: "add-task" });
-                        noteWrap.appendChild(button);
+        if (storedTitle) {
+            setItemsSaveLStorage(storedTitle);
+        } else {
+            const userInput = prompt("Enter text :");
+            if (userInput) {
+                setItemsSaveLStorage(userInput);
+            }
+        }
 
-                        const tasksList = createEl('ul');
-                        noteWrap.appendChild(tasksList);
+        if (storedTaskList) {
+            tasks.push(...storedTaskList.split(','));
+        } else {
+            while (true) {
+                const task = prompt('Enter new task');
+                if (!task) break;
+                tasks.push(task);
+            }
 
-                        const addTask = document.getElementById("add-task");
-                        addTask.addEventListener('click', (event) => {
-                                    const task = prompt('Enter new task');
-                                    tasks.push(task);
+            localStorage.setItem(storageName, tasks);
+            store = tasks;
+        }
 
+        const button = createEl('button', { textContent: "ADD New Task", id: "add-task" });
+        noteWrap.appendChild(button);
 
-                                    localStorage.setItem(storageName, tasks);
+        const tasksList = createEl('ul');
+        noteWrap.appendChild(tasksList);
 
-                                    // localStorage.getItem(storageName, tasks.split(","));
-                                    tasks.forEach(task => {
-                                                const listItem = document.createElement("li");
-                                                listItem.innerHTML = task;
-                                                tasksList.appendChild(listItem);
-                                    });
-                                    itemTask.appendChild(deleteButton);
-                                    const deleteButton = document.createElement("span");
-                                    deleteButton.className = "delete-btn";
-                                    deleteButton.textContent = "❌";
+        renderTasks(); // Перерисовываем список при загрузке страницы
 
-                                    deleteButton.addEventListener("click", (event) => {
+        const addTask = document.getElementById("add-task");
+        addTask.addEventListener('click', (event) => {
+            const task = prompt('Enter new task');
+            tasks.push(task);
 
-                                                const taskIndex = tasks.indexOf(task);
-                                                tasks.splice(taskIndex, 1);
+            localStorage.setItem(storageName, tasks);
+            renderTasks(); // Перерисовываем список после добавления новой задачи
+        });
 
-                                                localStorage.removeItem(storageName);
-                                                localStorage.setItem(storageName, tasks);
-                                                tasksList.removeChild(itemTask);
-                                    });
-
-
-                                    
-
-                        });
-
-            </script>
+    </script>
 
 </body>
 

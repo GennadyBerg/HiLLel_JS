@@ -1,78 +1,94 @@
 const storageTitle = 'title';
-const storageName = 'elements';
-const tasks = [];
-let store = null;
-let titleStor = null;
+        const storageName = 'elements';
+        const tasks = [];
+        let store = null;
+        let titleStor = null;
 
-const noteWrap = document.createElement("div");
-noteWrap.className = "wrapper";
-noteWrap.id = "main-wrap";
-document.body.append(noteWrap);
-noteWrap.style.backgroundColor = "lightBlue";
-noteWrap.style.width = "45%";
-noteWrap.style.height = "50vh";
-noteWrap.style.textAlign = "center";
-document.body.append(noteWrap);
+        const noteWrap = createEl('div', { id: 'main-wrap', className: "wrapper" });
 
-if (localStorage.getItem(storageTitle)) {
-            titleStor = localStorage.getItem(storageTitle);
-} 
-else {
-            const myTasksTitle = document.createElement("h1")
-            myTasksTitle.textContent = prompt("Enter name of Your Note with tasks");
-            noteWrap.append(myTasksTitle);
+        document.body.appendChild(noteWrap);
+        noteWrap.style.backgroundColor = "lightBlue";
+        noteWrap.style.width = "45%";
+        noteWrap.style.height = "50vh";
+        noteWrap.style.textAlign = "center";
 
-localStorage.setItem(storageTitle )
-titleStor = str;
-}
+        function createEl(tag, attr) {
+            const element = document.createElement(tag);
+            for (const key in attr) {
+                element[key] = attr[key];
+            }
+            return element;
+        }
 
+        function setItemsSaveLStorage(title) {
+            const notesTitle = createEl('h2', { id: 'title', textContent: title });
+            noteWrap.appendChild(notesTitle);
+            localStorage.setItem("storageTitle", title);
+        }
 
-const addTaskButton = document.createElement("button");
-addTaskButton.textContent = "Add new Task";
-addTaskButton.id = "add-task";
-noteWrap.append(addTaskButton);
+        function renderTasks() {
+            tasksList.innerHTML = ""; // Очищаем список перед добавлением новых задач
 
-// const deleteButton = document.createElement("span");
-// deleteButton.className = "delete-btn";
-// deleteButton.textContent = "❌";
+            tasks.forEach(task => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = task;
 
-// if (localStorage.getItem(storageName)) {
-//             store = localStorage.getItem(storageName).split(',');
-// } else {
-//             while (true) {
-//                         const task = prompt('Enter option > ');
-//                         if (!task) break;
+                const deleteButton = document.createElement("span");
+                deleteButton.className = "delete-btn";
+                deleteButton.textContent = "❌";
 
-//                         tasks.push(task);
-//             }
+                deleteButton.addEventListener("click", (event) => {
+                    const taskIndex = tasks.indexOf(task);
+                    tasks.splice(taskIndex, 1);
 
-//             localStorage.setItem(storageName, tasks);
-//             store = tasks;
-// }
+                    localStorage.removeItem(storageName);
+                    localStorage.setItem(storageName, tasks);
+                    tasksList.removeChild(listItem);
+                });
 
-// const taskList = document.createElement("ul");
-// noteWrap.appendChild(taskList);
+                listItem.appendChild(deleteButton);
+                tasksList.appendChild(listItem);
+            });
+        }
 
-// const addTask = document.getElementById("add-task");
-// const removeTask = document.getElementById("remove-elem");
+        const storedTitle = localStorage.getItem("storageTitle");
+        const storedTaskList = localStorage.getItem("elements");
 
+        if (storedTitle) {
+            setItemsSaveLStorage(storedTitle);
+        } else {
+            const userInput = prompt("Enter text :");
+            if (userInput) {
+                setItemsSaveLStorage(userInput);
+            }
+        }
 
-// tasks.forEach(task => {
-//             const itemTask = document.createElement("li");
-//             itemTask.innerHTML = task;
-//             taskList.appendChild(itemTask)
-//             itemTask.appendChild(deleteButton);
-//             deleteButton.addEventListener("click", (event) => {
-//                         taskList.removeChild(itemTask);
-//             })
+        if (storedTaskList) {
+            tasks.push(...storedTaskList.split(','));
+        } else {
+            while (true) {
+                const task = prompt('Enter new task');
+                if (!task) break;
+                tasks.push(task);
+            }
 
-// });
+            localStorage.setItem(storageName, tasks);
+            store = tasks;
+        }
 
+        const button = createEl('button', { textContent: "ADD New Task", id: "add-task" });
+        noteWrap.appendChild(button);
 
+        const tasksList = createEl('ul');
+        noteWrap.appendChild(tasksList);
 
+        renderTasks(); // Перерисовываем список при загрузке страницы
 
+        const addTask = document.getElementById("add-task");
+        addTask.addEventListener('click', (event) => {
+            const task = prompt('Enter new task');
+            tasks.push(task);
 
-
-
-// // localStorage.clear();
-
+            localStorage.setItem(storageName, tasks);
+            renderTasks(); // Перерисовываем список после добавления новой задачи
+        });

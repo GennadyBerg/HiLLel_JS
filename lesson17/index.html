@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Lesson17</title>
-            <script src="script.js" ></script>
 </head>
+
 <body>
-            
+            <div id="wrapper" style="width: 200px;"></div>
+            <script>
+                        const myPosition = [];
+                        const myLocationLink = document.createElement("a");
+                        const wrapper = document.getElementById("wrapper");
+                        wrapper.append(myLocationLink);
+
+                        // Проверяем, есть ли уже установленный href
+                        const savedHref = localStorage.getItem('myLocationHref');
+                        if (savedHref) {
+                                    myLocationLink.href = savedHref;
+                        } else {
+                                    navigator.geolocation.getCurrentPosition(
+                                                function (position) {
+                                                            myPosition.push(position.coords.latitude);
+                                                            myPosition.push(position.coords.longitude);
+                                                            console.log(myPosition);
+
+                                                            myLocationLink.href = `https://www.google.com/maps/@${myPosition[0]},${myPosition[1]},13z?entry=ttu`;
+
+                                                            // Сохраняем href в локальное хранилище
+                                                            localStorage.setItem('myLocationHref', myLocationLink.href);
+                                                });
+                        }
+
+                        myLocationLink.innerHTML = "My Working Place";
+            </script>
 </body>
+
 </html>

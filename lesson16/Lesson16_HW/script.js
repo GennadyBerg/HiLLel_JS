@@ -11,13 +11,13 @@ function createEl(tag, attr) {
     }
     return element;
 }
-
+const main = document.getElementById("main");
 const noteWrap = createEl('div', { id: 'main-wrap', className: 'wrapper' });
 
-body.appendChild(noteWrap);
+main.appendChild(noteWrap);
 noteWrap.style.backgroundColor = "lightBlue";
 noteWrap.style.width = "45%";
-noteWrap.style.height = "50vh";
+noteWrap.style.height = "100%";
 noteWrap.style.textAlign = "center";
 
 
@@ -58,7 +58,7 @@ const storedTaskList = localStorage.getItem("elements");
 if (storedTitle) {
     setItemsSaveLStorage(storedTitle);
 } else {
-    const userInput = prompt("Enter text :");
+    const userInput = prompt("Enter Name of List :");
     if (userInput) {
         setItemsSaveLStorage(userInput);
     }
@@ -83,7 +83,7 @@ noteWrap.appendChild(button);
 const tasksList = createEl('ul');
 noteWrap.appendChild(tasksList);
 
-renderTasks(); // Перерисовываем список при загрузке страницы
+renderTasks(); 
 
 const addTask = document.getElementById("add-task");
 addTask.addEventListener('click', (event) => {
@@ -91,5 +91,35 @@ addTask.addEventListener('click', (event) => {
     tasks.push(task);
 
     localStorage.setItem(storageName, tasks);
-    renderTasks(); // Перерисовываем список после добавления новой задачи
+    renderTasks(); 
 });
+
+///////// add My Location on the Google Maps////////////
+const myPosition = [];
+const myLocationLink = document.createElement("a");
+const myCoords = createEl("h5");
+noteWrap.append(myLocationLink);
+noteWrap.append(myCoords);
+
+
+// const savedHref = localStorage.getItem('myLocationHref');
+// if (savedHref) {
+//     myLocationLink.href = savedHref;
+// } else {
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            myPosition.push(position.coords.latitude);
+            myPosition.push(position.coords.longitude);
+            // console.log(myPosition);
+            myCoords.innerText = `${myPosition[0]},${myPosition[1]}`;
+
+            myLocationLink.href = `https://www.google.com/maps/@${myPosition[0]}  ,   ${myPosition[1]}`;
+
+            // localStorage.setItem('myLocationHref', myLocationLink.href);
+            // renderTasks();
+        });
+// }
+myLocationLink.target = "_blank";
+myLocationLink.innerHTML = "My Working Place";
+// myLocationLink = [];
+

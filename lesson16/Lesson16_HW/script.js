@@ -111,7 +111,7 @@ noteWrap.append(myCoords);
             myPosition.push(position.coords.latitude);
             myPosition.push(position.coords.longitude);
             // console.log(myPosition);
-            myCoords.innerText = `${myPosition[0]},${myPosition[1]}`;
+            myCoords.innerText = `${myPosition.join(",  ")}`;
 
             myLocationLink.href = `https://www.google.com/maps/@${myPosition[0]}  ,   ${myPosition[1]}`;
 

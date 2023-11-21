@@ -15,14 +15,10 @@ const main = document.getElementById("main");
 const noteWrap = createEl('div', { id: 'main-wrap', className: 'wrapper' });
 
 main.appendChild(noteWrap);
-noteWrap.style.backgroundColor = "lightBlue";
-noteWrap.style.width = "45%";
-noteWrap.style.height = "100%";
-noteWrap.style.textAlign = "center";
 
 
 function setItemsSaveLStorage(title) {
-    const notesTitle = createEl('h2', { id: 'title', textContent: title });
+    const notesTitle = createEl('h1', { id: 'title', textContent: title });
     noteWrap.appendChild(notesTitle);
     localStorage.setItem("storageTitle", title);
 }
@@ -111,7 +107,7 @@ noteWrap.append(myCoords);
             myPosition.push(position.coords.latitude);
             myPosition.push(position.coords.longitude);
             // console.log(myPosition);
-            myCoords.innerText = `${myPosition.join(",  ")}`;
+            myCoords.innerText = `${myPosition.join(" ;   ")}`;
 
             myLocationLink.href = `https://www.google.com/maps/@${myPosition[0]}  ,   ${myPosition[1]}`;
 

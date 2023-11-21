@@ -1,3 +1,49 @@
 **{
             box-sizing: border-box;
 }
+
+body {
+            background-color: beige;
+            
+}
+
+
+#main-wrap {
+            width: 60%;
+            height: fit-content;
+            border-radius: 20px;
+            background-color: lightblue;
+            text-align: center;
+            display: flexbox;
+            /* cursor: pointer; */
+            margin: auto;
+
+}
+
+li {
+            margin: 10px 10px;
+            text-align: left;
+            display: flex;
+            font-size: xx-large;
+            font-weight: 700;
+            color: rgb(53, 0, 55);
+            border-radius: 15px;
+            background-color: rgb(186, 238, 221);
+            align-items: normal;
+            justify-content: space-between;
+            padding: 5px 30px;
+            
+
+
+}
+
+button {
+            cursor: pointer;
+            border-radius: 6px;
+            background-color: blanchedalmond;
+}
+
+.delete-btn {
+            cursor: pointer;
+            margin-left: 30px;
+}
